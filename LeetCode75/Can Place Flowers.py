@@ -24,7 +24,7 @@ class Solution:
                     else:
                         prev_changed = False
 
-        if temp_n == 0:
+        if temp_n <= 0:
             return True
         else:
             return False
