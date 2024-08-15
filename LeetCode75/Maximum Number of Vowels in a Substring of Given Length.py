@@ -12,9 +12,6 @@ class Solution:
         else:
                     
             for i in range(k, len(s)):
-                
-                print(s[i])
-                print(s[i-k+1])
                 if s[i] in vowels:
                     currVowel +=1 
                 if s[i-k+1] in vowels:
