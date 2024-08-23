@@ -1,35 +1,28 @@
 from typing import List
 
 class Solution:
-    def longestOnes(self, nums: List[int], k: int) -> int:
-        max_length = self.maxLength(nums, k, 0)
-        i = 0
-        # for i in range(1, len(nums)- max_length):
-
-        while i >= len(nums) - max_length:           
-            temp = self.maxLength(nums, k, i)
+    def longestOnes(self, A: List[int], K: int) -> int:
+        left = right = 0
+        flip_chance = K 
+        # we need to find maximum right - left
+        for right in range(len(A)):
             
-            max_length = max(temp, max_length)
+            if A[right] == 0:
+                flip_chance -=1
+            # case in 1100, flip_chance = 0, however 1 1 0 0 0 is k is less than 0, left is still 1 right is 0
             
+            if flip_chance < 0:
+                # if we already used flip chance, get back the chance
+                if A[left] == 0:
+                    flip_chance += 1
+                # moving to next
+                left += 1
         
-        return max_length
-            
-    def maxLength(self, nums: List[int], k: int, index: int) -> int:
-        flip_count = k
-        max_length = 0
-        i = index
-        #   initialize max_length
-        while flip_count > 0:
-            if nums[i] == 0:
-                flip_count -= 1
-                max_length += 1
-            else:
-                max_length += 1
-            i += 1
-        return max_length
+        return right - left + 1
+        
 def main():
     sol = Solution()
-    result = sol.longestOnes([0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1], 3)    
+    result = sol.longestOnes([1,1,1,0,0,0,1,1,1,1,0], 2)    
     print(result)
 
 if __name__ == "__main__":
