@@ -15,7 +15,7 @@ class Solution:
         return [unique1, unique2]
 def main():
     sol = Solution()
-    result = sol.findDifference([1,2,3], [2,4,6]) # 28
+    result = sol.uniqueOccurrences([1,2,2,2,3,3,3]) 
     
     print(result)
 
