@@ -77,8 +77,16 @@ solution
 
 -- select customer_id, count(Visitor.visit_id) as count_no_trans from Visits LEFT OUTER JOIN Transactions on Visits.visit_id = Transactions.transaction_id group by customer_id
 
-select customer_id, count(v.visit_id) as count_no_trans 
-from Visits as v LEFT JOIN Transactions as t
-on v.visit_id = t.visit_id
-where transaction_id is Null
-group by customer_id
+-- select customer_id, count(v.visit_id) as count_no_trans 
+-- from Visits as v LEFT JOIN Transactions as t
+-- on v.visit_id = t.visit_id
+-- where transaction_id is Null
+-- group by customer_id
+
+SELECT Visits.customer_id, COUNT(Visits.customer_id) as count_no_trans
+FROM Visits
+LEFT JOIN
+Transactions
+ON Visits.visit_id = Transactions.visit_id
+WHERE Transactions.transaction_id is Null
+GROUP BY Visits.customer_id

@@ -38,4 +38,6 @@
 -- Tweet 1 has length = 14. It is a valid tweet.
 -- Tweet 2 has length = 32. It is an invalid tweet.
 
-SELECT tweet_id FROM Tweets WHERE length(content) > 15
+SELECT tweet_id
+FROM Tweets
+WHERE CHAR_LENGTH(content) > 15
