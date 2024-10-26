@@ -60,7 +60,12 @@
 -- +------+-------+
 
 SELECT e.name, b.bonus
-FROM employee AS e
-LEFT JOIN bonus AS b
-ON b.empId = e.empId
-WHERE b.bonus < 1000 OR b.bonus IS null
+FROM Employee AS e
+LEFT JOIN Bonus AS b
+ON e.empId = b.empId
+WHERE b.bonus < 1000 OR b.bonus is Null
+
+-- SELECT e.name, b.bonus FROM Employee e
+-- LEFT JOIN Bonus b
+-- ON e.empId = b.empId
+-- WHERE COALESCE(bonus,0) < 1000;
