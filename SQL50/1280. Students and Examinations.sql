@@ -104,9 +104,12 @@
 
 -- table: Student (s) , Subject (sub), Exam (e)
 
-SELECT s.student_id, s.student_name, sub.subject_name, COUNT(e.student_id) AS attended_exams
-FROM Students AS s
-CROSS JOIN Subjects AS sub
-LEFT JOIN Examinations AS e ON s.student_id = e.student_id AND sub.subject_name = e.subject_name
-GROUP BY s.student_id, s.student_name, sub.subject_name
-ORDER BY s.student_id, sub.subject_name;
+
+/* Write your T-SQL query statement below */
+SELECT stu.student_id, stu.student_name, sub.subject_name , COUNT(exa.student_id) as attended_exams
+FROM Students as stu
+CROSS JOIN Subjects as sub
+LEFT JOIN Examinations as exa
+ON stu.student_id = exa.student_id AND sub.subject_name = exa.subject_name
+GROUP BY stu.student_id, stu.student_name, sub.subject_name
+ORDER BY stu.student_id, stu.student_name
