@@ -164,3 +164,17 @@ WHERE NOT EXISTS (
 ) 
 AND cte.manager_id IS NOT NULL
 ORDER BY cte.employee_id;
+
+-- or 
+
+/* Write your T-SQL query statement below */
+
+SELECT
+    employee_id
+FROM 
+    employees
+WHERE
+    salary < 30000
+    AND manager_id NOT IN (SELECT employee_id FROM employees)
+ORDER BY 
+    employee_id;
